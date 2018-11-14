@@ -4,7 +4,7 @@ Aurelia plugin for [Inputmask](https://github.com/RobinHerbots/Inputmask)
 ## Installation
 
 ```
-npm inputmask aurelia-inputmask --save
+npm inputmask aurelia-inputmask tslib --save
 ```
 
 ## Configuration
