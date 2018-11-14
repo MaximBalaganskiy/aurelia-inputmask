@@ -2,8 +2,8 @@ import { FrameworkConfiguration, PLATFORM } from "aurelia-framework";
 
 export function configure(frameworkConfiguration: FrameworkConfiguration) {
 	frameworkConfiguration.globalResources([
-		PLATFORM.moduleName("./mask"),
+		PLATFORM.moduleName("./inputmask-attribute"),
 	]);
 }
 
-export { MaskCustomAttribute } from "./mask";
+export { InputmaskCustomAttribute } from "./inputmask-attribute";

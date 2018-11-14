@@ -1,8 +1,9 @@
 ﻿import Inputmask from "inputmask";
-import { autoinject, bindable, bindingMode } from "aurelia-framework";
+import { autoinject, bindable, bindingMode, customAttribute } from "aurelia-framework";
 
 @autoinject
-export class MaskCustomAttribute {
+@customAttribute("inputmask")
+export class InputmaskCustomAttribute {
 	constructor(private element: Element) { }
 
 	@bindable({ defaultBindingMode: bindingMode.twoWay })
@@ -28,7 +29,7 @@ export class MaskCustomAttribute {
 	@bindable({ defaultBindingMode: bindingMode.twoWay })
 	incompleteValue: any;
 
-	@bindable
+	@bindable({ primaryProperty: true })
 	mask: string;
 	maskChanged() {
 		if (this.input && this.mask) {
