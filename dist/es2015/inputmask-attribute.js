@@ -1,8 +1,8 @@
 import * as tslib_1 from "tslib";
 import Inputmask from "inputmask";
-import { autoinject, bindable, bindingMode } from "aurelia-framework";
-var MaskCustomAttribute = /** @class */ (function () {
-    function MaskCustomAttribute(element) {
+import { autoinject, bindable, bindingMode, customAttribute } from "aurelia-framework";
+var InputmaskCustomAttribute = /** @class */ (function () {
+    function InputmaskCustomAttribute(element) {
         var _this = this;
         this.element = element;
         this.value = undefined;
@@ -24,7 +24,7 @@ var MaskCustomAttribute = /** @class */ (function () {
             }
         };
     }
-    MaskCustomAttribute.prototype.valueChanged = function () {
+    InputmaskCustomAttribute.prototype.valueChanged = function () {
         if (!this.input) {
             return;
         }
@@ -40,13 +40,13 @@ var MaskCustomAttribute = /** @class */ (function () {
             label.classList.add(this.value ? "active" : "inactive");
         }
     };
-    MaskCustomAttribute.prototype.maskChanged = function () {
+    InputmaskCustomAttribute.prototype.maskChanged = function () {
         if (this.input && this.mask) {
             this.instance = new Inputmask(this.mask, { showMaskOnHover: false, inputFormat: this.inputFormat, greedy: this.greedy });
             this.instance.mask(this.input);
         }
     };
-    MaskCustomAttribute.prototype.attached = function () {
+    InputmaskCustomAttribute.prototype.attached = function () {
         if (this.element.tagName === "MD-INPUT") {
             this.input = this.element.querySelector("input");
         }
@@ -64,7 +64,7 @@ var MaskCustomAttribute = /** @class */ (function () {
         this.input.value = this.value;
         this.valueChanged();
     };
-    MaskCustomAttribute.prototype.detached = function () {
+    InputmaskCustomAttribute.prototype.detached = function () {
         this.input.removeEventListener("focusout", this.onInputChanged);
         this.input.removeEventListener("change", this.onInputChanged);
         this.input.removeEventListener("input", this.onInputChanged);
@@ -73,32 +73,33 @@ var MaskCustomAttribute = /** @class */ (function () {
     tslib_1.__decorate([
         bindable({ defaultBindingMode: bindingMode.twoWay }),
         tslib_1.__metadata("design:type", Object)
-    ], MaskCustomAttribute.prototype, "value", void 0);
+    ], InputmaskCustomAttribute.prototype, "value", void 0);
     tslib_1.__decorate([
         bindable({ defaultBindingMode: bindingMode.twoWay }),
         tslib_1.__metadata("design:type", Object)
-    ], MaskCustomAttribute.prototype, "incompleteValue", void 0);
+    ], InputmaskCustomAttribute.prototype, "incompleteValue", void 0);
+    tslib_1.__decorate([
+        bindable({ primaryProperty: true }),
+        tslib_1.__metadata("design:type", String)
+    ], InputmaskCustomAttribute.prototype, "mask", void 0);
     tslib_1.__decorate([
         bindable,
         tslib_1.__metadata("design:type", String)
-    ], MaskCustomAttribute.prototype, "mask", void 0);
-    tslib_1.__decorate([
-        bindable,
-        tslib_1.__metadata("design:type", String)
-    ], MaskCustomAttribute.prototype, "inputFormat", void 0);
+    ], InputmaskCustomAttribute.prototype, "inputFormat", void 0);
     tslib_1.__decorate([
         bindable,
         tslib_1.__metadata("design:type", Boolean)
-    ], MaskCustomAttribute.prototype, "isValueMasked", void 0);
+    ], InputmaskCustomAttribute.prototype, "isValueMasked", void 0);
     tslib_1.__decorate([
         bindable,
         tslib_1.__metadata("design:type", Boolean)
-    ], MaskCustomAttribute.prototype, "greedy", void 0);
-    MaskCustomAttribute = tslib_1.__decorate([
+    ], InputmaskCustomAttribute.prototype, "greedy", void 0);
+    InputmaskCustomAttribute = tslib_1.__decorate([
         autoinject,
+        customAttribute("inputmask"),
         tslib_1.__metadata("design:paramtypes", [Element])
-    ], MaskCustomAttribute);
-    return MaskCustomAttribute;
+    ], InputmaskCustomAttribute);
+    return InputmaskCustomAttribute;
 }());
-export { MaskCustomAttribute };
-//# sourceMappingURL=mask.js.map
+export { InputmaskCustomAttribute };
+//# sourceMappingURL=inputmask-attribute.js.map

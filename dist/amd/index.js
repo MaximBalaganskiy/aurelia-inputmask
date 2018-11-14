@@ -1,12 +1,12 @@
-define(["require", "exports", "aurelia-framework", "./mask"], function (require, exports, aurelia_framework_1, mask_1) {
+define(["require", "exports", "aurelia-framework", "./inputmask-attribute"], function (require, exports, aurelia_framework_1, inputmask_attribute_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     function configure(frameworkConfiguration) {
         frameworkConfiguration.globalResources([
-            aurelia_framework_1.PLATFORM.moduleName("./mask"),
+            aurelia_framework_1.PLATFORM.moduleName("./inputmask-attribute"),
         ]);
     }
     exports.configure = configure;
-    exports.MaskCustomAttribute = mask_1.MaskCustomAttribute;
+    exports.InputmaskCustomAttribute = inputmask_attribute_1.InputmaskCustomAttribute;
 });
 //# sourceMappingURL=index.js.map

@@ -1,5 +1,5 @@
 import Inputmask from "inputmask";
-export declare class MaskCustomAttribute {
+export declare class InputmaskCustomAttribute {
     private element;
     constructor(element: Element);
     value: any;
