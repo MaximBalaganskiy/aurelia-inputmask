@@ -20,10 +20,6 @@ export class InputmaskCustomAttribute {
 		if (this.input.value !== this.value) {
 			this.input.value = this.value;
 		}
-		const label = this.input.nextElementSibling as HTMLLabelElement;
-		if (label.nodeName === "LABEL") {
-			label.classList.add(this.value ? "active" : "inactive");
-		}
 	}
 
 	@bindable({ defaultBindingMode: bindingMode.twoWay })
