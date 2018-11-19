@@ -35,10 +35,7 @@ define(["require", "exports", "tslib", "inputmask", "aurelia-framework"], functi
             if (this.input.value !== this.value) {
                 this.input.value = this.value;
             }
-            var label = this.input.nextElementSibling;
-            if (label.nodeName === "LABEL") {
-                label.classList.add(this.value ? "active" : "inactive");
-            }
+            this.element.dispatchEvent(new CustomEvent("inputmask-change", { bubbles: true }));
         };
         InputmaskCustomAttribute.prototype.maskChanged = function () {
             if (this.input && this.mask) {
@@ -47,14 +44,14 @@ define(["require", "exports", "tslib", "inputmask", "aurelia-framework"], functi
             }
         };
         InputmaskCustomAttribute.prototype.attached = function () {
-            if (this.element.tagName === "MD-INPUT") {
-                this.input = this.element.querySelector("input");
-            }
-            else if (this.element.tagName === "INPUT") {
+            if (this.element.tagName === "INPUT") {
                 this.input = this.element;
             }
             else {
-                return;
+                this.input = this.element.querySelector("input");
+                if (!this.input) {
+                    return;
+                }
             }
             this.input.addEventListener("focusout", this.onInputChanged);
             this.input.addEventListener("change", this.onInputChanged);
