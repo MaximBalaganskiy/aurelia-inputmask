@@ -20,6 +20,7 @@ export class InputmaskCustomAttribute {
 		if (this.input.value !== this.value) {
 			this.input.value = this.value;
 		}
+		this.element.dispatchEvent(new CustomEvent("inputmask-change", { bubbles: true }));
 	}
 
 	@bindable({ defaultBindingMode: bindingMode.twoWay })
@@ -48,14 +49,14 @@ export class InputmaskCustomAttribute {
 	instance: Inputmask;
 
 	attached() {
-		if (this.element.tagName === "MD-INPUT") {
-			this.input = this.element.querySelector("input");
-		}
-		else if (this.element.tagName === "INPUT") {
+		if (this.element.tagName === "INPUT") {
 			this.input = this.element as HTMLInputElement;
 		}
 		else {
-			return;
+			this.input = this.element.querySelector("input");
+			if (!this.input) {
+				return;
+			}
 		}
 		this.input.addEventListener("focusout", this.onInputChanged);
 		this.input.addEventListener("change", this.onInputChanged);
