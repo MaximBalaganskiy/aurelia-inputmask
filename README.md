@@ -12,7 +12,7 @@ npm inputmask aurelia-inputmask tslib --save
 ```typescript
 // main.ts
 export function configure(aurelia: Aurelia) {
-    aurelia.use.plugin(PLATFORM.moduleName("aurelia-inputmask"));
+    aurelia.use.plugin(PLATFORM.moduleName("aurelia-inputmask"), { showMaskOnHover: false /* any default options */ });
     // the rest of your configuration...
 }
 ```
@@ -21,11 +21,11 @@ export function configure(aurelia: Aurelia) {
 
 ```html
 <input inputmask="999-999-999" value.bind="rawValue" />
-<input inputmask="mask: 999-999-999; value.bind: inputmaskValue; greedy.bind: false; is-value-masked: true" value.bind="rawValue" />
-<input inputmask="mask: datetime; input-format: dd/mm/yyyy; value.bind: inputmaskValue" value.bind="rawValue" />
+<input inputmask="mask: 999-999-999; value.bind: inputmaskValue; options.bind: { greedy: false }; is-value-masked: true" value.bind="rawValue" />
+<input inputmask="mask: datetime; options.bind: { inputFormat: 'dd/mm/yyyy' }; value.bind: inputmaskValue" value.bind="rawValue" />
 ```
 
-Not all original options are supported via the attribute, but you can use `data-inputmask-<option>` html attributes to configure the mask on an element.
+You can either use `options` attribute or `data-inputmask-<option>` html attributes to configure the mask on an element.
 
 ## Contribution
 

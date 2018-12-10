@@ -1,10 +1,11 @@
 ﻿import Inputmask from "inputmask";
 import { autoinject, bindable, bindingMode, customAttribute } from "aurelia-framework";
+import { OptionsStore } from "./options-store";
 
 @autoinject
 @customAttribute("inputmask")
 export class InputmaskCustomAttribute {
-	constructor(private element: Element) { }
+	constructor(private element: Element, private optionsStore: OptionsStore) { }
 
 	@bindable({ defaultBindingMode: bindingMode.twoWay })
 	value: any = undefined;
@@ -30,23 +31,20 @@ export class InputmaskCustomAttribute {
 	mask: string;
 	maskChanged() {
 		if (this.input && this.mask) {
-			this.instance = new Inputmask(this.mask, { showMaskOnHover: false, inputFormat: this.inputFormat, greedy: this.greedy });
+			this.createInstance();
 			this.instance.mask(this.input);
 		}
 	}
 
 	@bindable
-	inputFormat: string;
-
-	@bindable
 	isValueMasked: boolean;
-
-	@bindable
-	greedy: boolean = true;
 
 	input: HTMLInputElement;
 
 	instance: Inputmask;
+
+	@bindable
+	options: any;
 
 	attached() {
 		if (this.element.tagName === "INPUT") {
@@ -61,10 +59,15 @@ export class InputmaskCustomAttribute {
 		this.input.addEventListener("focusout", this.onInputChanged);
 		this.input.addEventListener("change", this.onInputChanged);
 		this.input.addEventListener("input", this.onInputChanged);
-		this.instance = new Inputmask(this.mask, { showMaskOnHover: false, inputFormat: this.inputFormat, greedy: this.greedy });
+		this.createInstance();
 		this.instance.mask(this.input);
 		this.input.value = this.value;
 		this.valueChanged();
+	}
+
+	createInstance() {
+		let options = this.options ? { ...this.optionsStore.options, ...this.options } : this.optionsStore.options;
+		this.instance = new Inputmask(this.mask, options);
 	}
 
 	detached() {
