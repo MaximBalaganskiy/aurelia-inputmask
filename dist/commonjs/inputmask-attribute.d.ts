@@ -1,19 +1,21 @@
 import Inputmask from "inputmask";
+import { OptionsStore } from "./options-store";
 export declare class InputmaskCustomAttribute {
     private element;
-    constructor(element: Element);
+    private optionsStore;
+    constructor(element: Element, optionsStore: OptionsStore);
     value: any;
     ignoreChange: boolean;
     valueChanged(): void;
     incompleteValue: any;
     mask: string;
     maskChanged(): void;
-    inputFormat: string;
     isValueMasked: boolean;
-    greedy: boolean;
     input: HTMLInputElement;
     instance: Inputmask;
+    options: any;
     attached(): void;
+    createInstance(): void;
     detached(): void;
     suppressOnInput: boolean;
     onInputChanged: (e: Event) => void;

@@ -1,12 +1,13 @@
 import * as tslib_1 from "tslib";
 import Inputmask from "inputmask";
 import { autoinject, bindable, bindingMode, customAttribute } from "aurelia-framework";
+import { OptionsStore } from "./options-store";
 var InputmaskCustomAttribute = /** @class */ (function () {
-    function InputmaskCustomAttribute(element) {
+    function InputmaskCustomAttribute(element, optionsStore) {
         var _this = this;
         this.element = element;
+        this.optionsStore = optionsStore;
         this.value = undefined;
-        this.greedy = true;
         this.onInputChanged = function (e) {
             if (_this.suppressOnInput) {
                 return;
@@ -39,7 +40,7 @@ var InputmaskCustomAttribute = /** @class */ (function () {
     };
     InputmaskCustomAttribute.prototype.maskChanged = function () {
         if (this.input && this.mask) {
-            this.instance = new Inputmask(this.mask, { showMaskOnHover: false, inputFormat: this.inputFormat, greedy: this.greedy });
+            this.createInstance();
             this.instance.mask(this.input);
         }
     };
@@ -56,10 +57,14 @@ var InputmaskCustomAttribute = /** @class */ (function () {
         this.input.addEventListener("focusout", this.onInputChanged);
         this.input.addEventListener("change", this.onInputChanged);
         this.input.addEventListener("input", this.onInputChanged);
-        this.instance = new Inputmask(this.mask, { showMaskOnHover: false, inputFormat: this.inputFormat, greedy: this.greedy });
+        this.createInstance();
         this.instance.mask(this.input);
         this.input.value = this.value;
         this.valueChanged();
+    };
+    InputmaskCustomAttribute.prototype.createInstance = function () {
+        var options = this.options ? tslib_1.__assign({}, this.optionsStore.options, this.options) : this.optionsStore.options;
+        this.instance = new Inputmask(this.mask, options);
     };
     InputmaskCustomAttribute.prototype.detached = function () {
         this.input.removeEventListener("focusout", this.onInputChanged);
@@ -81,20 +86,16 @@ var InputmaskCustomAttribute = /** @class */ (function () {
     ], InputmaskCustomAttribute.prototype, "mask", void 0);
     tslib_1.__decorate([
         bindable,
-        tslib_1.__metadata("design:type", String)
-    ], InputmaskCustomAttribute.prototype, "inputFormat", void 0);
-    tslib_1.__decorate([
-        bindable,
         tslib_1.__metadata("design:type", Boolean)
     ], InputmaskCustomAttribute.prototype, "isValueMasked", void 0);
     tslib_1.__decorate([
         bindable,
-        tslib_1.__metadata("design:type", Boolean)
-    ], InputmaskCustomAttribute.prototype, "greedy", void 0);
+        tslib_1.__metadata("design:type", Object)
+    ], InputmaskCustomAttribute.prototype, "options", void 0);
     InputmaskCustomAttribute = tslib_1.__decorate([
         autoinject,
         customAttribute("inputmask"),
-        tslib_1.__metadata("design:paramtypes", [Element])
+        tslib_1.__metadata("design:paramtypes", [Element, OptionsStore])
     ], InputmaskCustomAttribute);
     return InputmaskCustomAttribute;
 }());
