@@ -88,7 +88,7 @@ export class InputmaskCustomAttribute {
 			this.suppressOnInput = false;
 		}
 		this.incompleteValue = this.input.inputmask.unmaskedvalue();
-		const value = this.input.inputmask.isComplete() ? (this.isValueMasked ? this.input.value : this.incompleteValue) : "";
+		const value = this.input.inputmask.isComplete() ? (this.isValueMasked ? this.input.value : this.incompleteValue) : undefined;
 		if (this.value !== value) {
 			this.ignoreChange = true;
 			this.value = value;
