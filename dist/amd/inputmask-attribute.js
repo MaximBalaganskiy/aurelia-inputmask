@@ -17,7 +17,7 @@ define(["require", "exports", "tslib", "inputmask", "aurelia-framework", "./opti
                     _this.suppressOnInput = false;
                 }
                 _this.incompleteValue = _this.input.inputmask.unmaskedvalue();
-                var value = _this.input.inputmask.isComplete() ? (_this.isValueMasked ? _this.input.value : _this.incompleteValue) : "";
+                var value = _this.input.inputmask.isComplete() ? (_this.isValueMasked ? _this.input.value : _this.incompleteValue) : undefined;
                 if (_this.value !== value) {
                     _this.ignoreChange = true;
                     _this.value = value;

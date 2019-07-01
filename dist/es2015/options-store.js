@@ -1,8 +1,6 @@
-var OptionsStore = /** @class */ (function () {
-    function OptionsStore() {
+export class OptionsStore {
+    constructor() {
         this.options = {};
     }
-    return OptionsStore;
-}());
-export { OptionsStore };
+}
 //# sourceMappingURL=options-store.js.map
