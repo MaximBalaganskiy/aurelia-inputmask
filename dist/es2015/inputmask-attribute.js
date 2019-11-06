@@ -34,7 +34,7 @@ let InputmaskCustomAttribute = class InputmaskCustomAttribute {
         }
         if (this.input.value !== this.value) {
             this.input.value = this.value;
-            this.input.dispatchEvent(new Event("change"));
+            this.input.dispatchEvent(new CustomEvent("change"));
         }
         this.element.dispatchEvent(new CustomEvent("inputmask-change", { bubbles: true }));
     }
