@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.4"></a>
+## [1.1.4](https://github.com/MaximBalaganskiy/aurelia-inputmask/compare/v1.1.3...v1.1.4) (2019-11-06)
+
+
+### Bug Fixes
+
+* use aurelian polyfill ([cc1a37e](https://github.com/MaximBalaganskiy/aurelia-inputmask/commit/cc1a37e)), closes [#7](https://github.com/MaximBalaganskiy/aurelia-inputmask/issues/7)
+
+
+
 <a name="1.1.3"></a>
 ## [1.1.3](https://github.com/MaximBalaganskiy/aurelia-inputmask/compare/v1.1.2...v1.1.3) (2019-10-31)
 
