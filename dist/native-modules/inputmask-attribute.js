@@ -64,7 +64,7 @@ var InputmaskCustomAttribute = /** @class */ (function () {
         this.valueChanged();
     };
     InputmaskCustomAttribute.prototype.createInstance = function () {
-        var options = this.options ? tslib_1.__assign({}, this.optionsStore.options, this.options) : this.optionsStore.options;
+        var options = tslib_1.__assign({}, this.optionsStore.options, this.options);
         this.instance = new Inputmask(this.mask, options);
     };
     InputmaskCustomAttribute.prototype.detached = function () {

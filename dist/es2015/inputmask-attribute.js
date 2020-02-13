@@ -63,7 +63,7 @@ let InputmaskCustomAttribute = class InputmaskCustomAttribute {
         this.valueChanged();
     }
     createInstance() {
-        let options = this.options ? Object.assign({}, this.optionsStore.options, this.options) : this.optionsStore.options;
+        let options = Object.assign({}, this.optionsStore.options, this.options);
         this.instance = new Inputmask(this.mask, options);
     }
     detached() {
