@@ -67,7 +67,7 @@ export class InputmaskCustomAttribute {
 	}
 
 	createInstance() {
-		let options = this.options ? { ...this.optionsStore.options, ...this.options } : this.optionsStore.options;
+		let options = { ...this.optionsStore.options, ...this.options };
 		this.instance = new Inputmask(this.mask, options);
 	}
 
