@@ -8,7 +8,7 @@ export class InputmaskCustomAttribute {
 	constructor(private element: Element, private optionsStore: OptionsStore) { }
 
 	@bindable({ defaultBindingMode: bindingMode.twoWay })
-	value: any = undefined;
+	value: any = "";
 	ignoreChange: boolean;
 	valueChanged() {
 		if (!this.input) {
@@ -19,7 +19,7 @@ export class InputmaskCustomAttribute {
 			return;
 		}
 		if (this.input.value !== this.value) {
-			this.input.value = this.value;
+			this.input.value = this.value || "";
 			this.input.dispatchEvent(new CustomEvent("change"));
 		}
 		this.element.dispatchEvent(new CustomEvent("inputmask-change", { bubbles: true }));
@@ -62,7 +62,7 @@ export class InputmaskCustomAttribute {
 		this.input.addEventListener("input", this.onInputChanged);
 		this.createInstance();
 		this.instance.mask(this.input);
-		this.input.value = this.value;
+		this.input.value = this.value || "";
 		this.valueChanged();
 	}
 
