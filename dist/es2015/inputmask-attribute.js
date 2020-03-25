@@ -6,7 +6,7 @@ let InputmaskCustomAttribute = class InputmaskCustomAttribute {
     constructor(element, optionsStore) {
         this.element = element;
         this.optionsStore = optionsStore;
-        this.value = undefined;
+        this.value = "";
         this.onInputChanged = (e) => {
             if (this.suppressOnInput) {
                 return;
@@ -33,7 +33,7 @@ let InputmaskCustomAttribute = class InputmaskCustomAttribute {
             return;
         }
         if (this.input.value !== this.value) {
-            this.input.value = this.value;
+            this.input.value = this.value || "";
             this.input.dispatchEvent(new CustomEvent("change"));
         }
         this.element.dispatchEvent(new CustomEvent("inputmask-change", { bubbles: true }));
@@ -59,7 +59,7 @@ let InputmaskCustomAttribute = class InputmaskCustomAttribute {
         this.input.addEventListener("input", this.onInputChanged);
         this.createInstance();
         this.instance.mask(this.input);
-        this.input.value = this.value;
+        this.input.value = this.value || "";
         this.valueChanged();
     }
     createInstance() {

@@ -23,7 +23,7 @@ System.register(["tslib", "inputmask", "aurelia-framework", "./options-store"], 
                     var _this = this;
                     this.element = element;
                     this.optionsStore = optionsStore;
-                    this.value = undefined;
+                    this.value = "";
                     this.onInputChanged = function (e) {
                         if (_this.suppressOnInput) {
                             return;
@@ -50,7 +50,7 @@ System.register(["tslib", "inputmask", "aurelia-framework", "./options-store"], 
                         return;
                     }
                     if (this.input.value !== this.value) {
-                        this.input.value = this.value;
+                        this.input.value = this.value || "";
                         this.input.dispatchEvent(new CustomEvent("change"));
                     }
                     this.element.dispatchEvent(new CustomEvent("inputmask-change", { bubbles: true }));
@@ -76,7 +76,7 @@ System.register(["tslib", "inputmask", "aurelia-framework", "./options-store"], 
                     this.input.addEventListener("input", this.onInputChanged);
                     this.createInstance();
                     this.instance.mask(this.input);
-                    this.input.value = this.value;
+                    this.input.value = this.value || "";
                     this.valueChanged();
                 };
                 InputmaskCustomAttribute.prototype.createInstance = function () {
