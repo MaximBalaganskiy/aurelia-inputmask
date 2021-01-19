@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/MaximBalaganskiy/aurelia-inputmask/compare/v1.1.6...v2.0.0) (2021-01-19)
+
+
+### Bug Fixes
+
+* do not fire a duplicate event ([94f8fcf](https://github.com/MaximBalaganskiy/aurelia-inputmask/commit/94f8fcf9c7aa989a74045f75df487e9cc4e846ef))
+
 ### [1.1.6](https://github.com/MaximBalaganskiy/aurelia-inputmask/compare/v1.1.5...v1.1.6) (2020-03-25)
 
 
