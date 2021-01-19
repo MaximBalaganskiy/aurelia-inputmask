@@ -1,14 +1,14 @@
-﻿import Inputmask from "inputmask";
-import { autoinject, bindable, bindingMode, customAttribute } from "aurelia-framework";
-import { OptionsStore } from "./options-store";
+﻿import Inputmask from 'inputmask';
+import { autoinject, bindable, bindingMode, customAttribute } from 'aurelia-framework';
+import { OptionsStore } from './options-store';
 
 @autoinject
-@customAttribute("inputmask")
+@customAttribute('inputmask')
 export class InputmaskCustomAttribute {
 	constructor(private element: Element, private optionsStore: OptionsStore) { }
 
 	@bindable({ defaultBindingMode: bindingMode.twoWay })
-	value: any = "";
+	value: string = '';
 	ignoreChange: boolean;
 	valueChanged() {
 		if (!this.input) {
@@ -19,14 +19,14 @@ export class InputmaskCustomAttribute {
 			return;
 		}
 		if (this.input.value !== this.value) {
-			this.input.value = this.value || "";
-			this.input.dispatchEvent(new CustomEvent("change"));
+			this.input.value = this.value || '';
+			this.input.dispatchEvent(new CustomEvent('change'));
 		}
-		this.element.dispatchEvent(new CustomEvent("inputmask-change", { bubbles: true }));
+		this.element.dispatchEvent(new CustomEvent('inputmask-change', { bubbles: true }));
 	}
 
 	@bindable({ defaultBindingMode: bindingMode.twoWay })
-	incompleteValue: any;
+	incompleteValue: string;
 
 	@bindable({ primaryProperty: true })
 	mask: string;
@@ -45,36 +45,35 @@ export class InputmaskCustomAttribute {
 	instance: Inputmask;
 
 	@bindable
-	options: any;
+	options: Record<string, unknown>;
 
 	attached() {
-		if (this.element.tagName === "INPUT") {
+		if (this.element.tagName === 'INPUT') {
 			this.input = this.element as HTMLInputElement;
-		}
-		else {
-			this.input = this.element.querySelector("input");
+		} else {
+			this.input = this.element.querySelector('input');
 			if (!this.input) {
 				return;
 			}
 		}
-		this.input.addEventListener("focusout", this.onInputChanged);
-		this.input.addEventListener("change", this.onInputChanged);
-		this.input.addEventListener("input", this.onInputChanged);
+		this.input.addEventListener('focusout', this.onInputChanged);
+		this.input.addEventListener('change', this.onInputChanged);
+		this.input.addEventListener('input', this.onInputChanged);
 		this.createInstance();
 		this.instance.mask(this.input);
-		this.input.value = this.value || "";
+		this.input.value = this.value || '';
 		this.valueChanged();
 	}
 
 	createInstance() {
-		let options = { ...this.optionsStore.options, ...this.options };
+		const options = { ...this.optionsStore.options, ...this.options };
 		this.instance = new Inputmask(this.mask, options);
 	}
 
 	detached() {
-		this.input.removeEventListener("focusout", this.onInputChanged);
-		this.input.removeEventListener("change", this.onInputChanged);
-		this.input.removeEventListener("input", this.onInputChanged);
+		this.input.removeEventListener('focusout', this.onInputChanged);
+		this.input.removeEventListener('change', this.onInputChanged);
+		this.input.removeEventListener('input', this.onInputChanged);
 		this.input.inputmask.remove();
 	}
 

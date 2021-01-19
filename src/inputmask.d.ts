@@ -1,16 +1,15 @@
 declare class Inputmask {
-    constructor(alias: any, options: any);
-    unmaskedvalue(): string;
-    isComplete(): boolean;
-    mask(elems: any): any;
-    remove(): any;
+  constructor(alias: unknown, options: unknown);
+  unmaskedvalue(): string;
+  isComplete(): boolean;
+  mask(elems: unknown): unknown;
+  remove(): unknown;
 }
 
-declare module "inputmask"{
-    export default Inputmask;
+declare module 'inputmask' {
+  export default Inputmask;
 }
 
-// tslint:disable-next-line:interface-name
 interface HTMLInputElement {
-    inputmask: Inputmask;
+  inputmask: Inputmask;
 }

@@ -1,3 +1,3 @@
 export class OptionsStore {
-	options: any = {};
+  options: Record<string, unknown> = {};
 }
