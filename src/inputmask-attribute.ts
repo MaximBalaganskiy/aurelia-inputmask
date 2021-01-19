@@ -77,22 +77,13 @@ export class InputmaskCustomAttribute {
 		this.input.inputmask.remove();
 	}
 
-	suppressOnInput: boolean;
-	onInputChanged = (e: Event) => {
-		if (this.suppressOnInput) {
-			return;
-		}
-		if (e.type === "input") {
-			this.suppressOnInput = true;
-			this.input.dispatchEvent(new CustomEvent("input", { bubbles: true }));
-			this.suppressOnInput = false;
-		}
+	onInputChanged = () => {
 		this.incompleteValue = this.input.inputmask.unmaskedvalue();
 		const value = this.input.inputmask.isComplete() ? (this.isValueMasked ? this.input.value : this.incompleteValue) : undefined;
 		if (this.value !== value) {
 			this.ignoreChange = true;
 			this.value = value;
 		}
-	}
+	};
 
 }
