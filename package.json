@@ -55,7 +55,7 @@
   },
   "peerDependencies": {
     "aurelia-framework": ">=1.3.1",
-    "inputmask": ">=5.0.5",
+    "inputmask": ">=4.0.0",
     "tslib": ">=1.9.0"
   }
 }
