@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/MaximBalaganskiy/aurelia-inputmask/compare/v2.0.0...v2.0.1) (2021-03-02)
+
+
+### Bug Fixes
+
+* allow using lower inputmask versions ([fe1587b](https://github.com/MaximBalaganskiy/aurelia-inputmask/commit/fe1587b183384decd9a4ee6591c6fdf93fcae9a2))
+* **deps:** add tslib peer ([b2ec33b](https://github.com/MaximBalaganskiy/aurelia-inputmask/commit/b2ec33b18c76b28ae8f4c412ebff7ba3b689d524))
+
 ## [2.0.0](https://github.com/MaximBalaganskiy/aurelia-inputmask/compare/v1.1.6...v2.0.0) (2021-01-19)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "aurelia-inputmask",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "registry": "github",
   "description": "Aurelia plugin for https://github.com/RobinHerbots/Inputmask",
   "keywords": [
